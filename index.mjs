@@ -1,7 +1,7 @@
-const fs = require("fs");
-const path = require('path');
-const inquirer = require("inquirer");
-const generateMarkdown = require("./utils/generateMarkdown");
+import fs from "fs";
+import path from 'path';
+import inquirer from "inquirer";
+import generateMarkdown from "./utils/generateMarkdown.js";
 
 // array of questions for user
 const questions = [
@@ -16,13 +16,28 @@ const questions = [
     "Please select a license"
 ];
 
+let [title, description, installation, usage, contributing, instructions, username, address, license] = questions;
+
 // function to write README file
 function writeToFile(fileName, data) {
 }
 
 // function to initialize program
-function init() {
-
+async function init() {
+    let {projectTitle, projectDescription} = await inquirer
+    .prompt([
+        {
+            type: 'input',
+            name: 'projectTitle',
+            message: title,
+        },
+        {
+            type: 'input',
+            name: 'projectDescription',
+            message: description,
+        },
+    ])
+    console.log(projectTitle, projectDescription);
 }
 
 // function call to initialize program
