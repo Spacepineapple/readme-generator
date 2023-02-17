@@ -1,4 +1,4 @@
-// function to generate markdown for README
+// Function to generate markdown for README
 function generateMarkdown(data) {
   let licenseBadge = generateLicense(data.license);
   return `
@@ -37,6 +37,7 @@ function generateMarkdown(data) {
 `;
 }
 
+//Function to generate license badges for the README
 function generateLicense(license) {
   switch (license) {
     case "Creative Commons Zero v1.0 Universal":
@@ -63,6 +64,5 @@ function generateLicense(license) {
   }
 }
 
-
-
+//Export the generateMarkdown function for use in other files
 module.exports = generateMarkdown;

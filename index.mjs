@@ -1,9 +1,11 @@
+//Import the filesystem module
 import fs from "fs";
-import path from 'path';
+//Import the inquirer module
 import inquirer from "inquirer";
+//Import the generateMarkdown function
 import generateMarkdown from "./utils/generateMarkdown.js";
 
-// array of questions for user
+// An array of questions for the user for use in the README prompts
 const questions = [
     "What is the title of your project?",
     "Please give a short description of your project",
@@ -16,19 +18,24 @@ const questions = [
     "Please select a license"
 ];
 
+//Assign each of the questions in the questions array to an individual variable
 let [title, description, installation, usage, contributing, test, username, email, license] = questions;
 
 // function to write README file
 function writeToFile(data) {
+    //Create a README markdown file in the "generated_readme" folder
     let fileName = './generated_readme/README.md';
+    //Generate the markdown content for the README file
     let markdown = generateMarkdown(data);
     fs.writeFile(fileName, markdown, (err) => {
+        //If there is an error, log it to the console. Otherwise log "README generated!"
         err ? console.error(err) : console.log("README generated!");
     }); 
 }
 
 // function to initialize program
 async function init() {
+    //Asynchronously assign the inquirer prompt responses to a variable
     let inputData = await inquirer
     .prompt([
         {
