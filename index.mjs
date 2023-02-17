@@ -16,7 +16,7 @@ const questions = [
     "Please select a license"
 ];
 
-let [title, description, installation, usage, contributing, test, username, address, license] = questions;
+let [title, description, installation, usage, contributing, test, username, email, license] = questions;
 
 // function to write README file
 function writeToFile(fileName, data) {
@@ -67,7 +67,7 @@ async function init() {
         },
         {
             type: 'input',
-            name: 'address',
+            name: 'email',
             message: email,
         },
         {
