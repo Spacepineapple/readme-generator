@@ -19,7 +19,8 @@ const questions = [
 let [title, description, installation, usage, contributing, test, username, email, license] = questions;
 
 // function to write README file
-function writeToFile(fileName, data) {
+function writeToFile(data) {
+    let fileName = './generated_readme/README.md';
     let markdown = generateMarkdown(data);
     fs.writeFile(fileName, markdown, (err) => {
         err ? console.error(err) : console.log("README generated!");
@@ -85,7 +86,7 @@ async function init() {
             ],
         },
     ])
-    writeToFile("README.md", inputData);
+    writeToFile(inputData);
 }
 
 // function call to initialize program
