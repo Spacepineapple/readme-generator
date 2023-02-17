@@ -20,70 +20,72 @@ let [title, description, installation, usage, contributing, test, username, addr
 
 // function to write README file
 function writeToFile(fileName, data) {
+    let markdown = generateMarkdown(data);
+    fs.writeFile(fileName, markdown, (err) => {
+        err ? console.error(err) : console.log("README generated!");
+    }); 
 }
 
 // function to initialize program
 async function init() {
-    let {projectTitle, projectDescription, projectInstallation, projectUsage, projectContributing, projectTest, projectUsername, projectAddress, projectLicense} = await inquirer
+    let inputData = await inquirer
     .prompt([
         {
             type: "input",
-            name: "projectTitle",
+            name: "title",
             message: title,
         },
         {
             type: "input",
-            name: "projectDescription",
+            name: "description",
             message: description,
         },
         {
             type: "input",
-            name: "projectInstallation",
+            name: "installation",
             message: installation,
         },
         {
             type: "input",
-            name: "projectUsage",
+            name: "usage",
             message: usage,
         },
         {
             type: "input",
-            name: "projectContributing",
+            name: "contributing",
             message: contributing,
         },
         {
             type: "input",
-            name: "projectTest",
+            name: "test",
             message: test,
         },
         {
             type: 'input',
-            name: 'projectUsername',
+            name: 'username',
             message: username,
         },
         {
             type: 'input',
-            name: 'projectAddress',
-            message: address,
+            name: 'address',
+            message: email,
         },
         {
             type: 'list',
-            name: 'projectLicense',
+            name: 'license',
             message: license,
             choices: [
                 "Creative Commons Zero v1.0 Universal",
                 "Creative Commons Attribution 4.0",
                 "Creative Commons Attribution Share Alike 4.0",
-                "Do What The F*ck You Want To Public License",
-                "European Union Public License 1.1",
+                "Do What the F*ck You Want to Public License",
                 "MIT",
                 "Mozilla Public License 2.0",
-                "Open Software License 3.0",
                 "The Unlicense"
             ],
         },
     ])
-    console.log(projectTitle, projectDescription, projectInstallation, projectUsage, projectContributing, projectTest, projectUsername, projectAddress, projectLicense);
+    writeToFile("README.md", inputData);
 }
 
 // function call to initialize program
