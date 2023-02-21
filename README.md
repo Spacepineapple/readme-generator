@@ -12,7 +12,8 @@
 The repository for this project can be found at
 https://github.com/Spacepineapple/readme-generator. Please note that as this
 programme uses Node.js, it has not been deployed and there is no URL for the
-'live' programme.
+'live' programme. An explanatory video demonstrating this project can be viewed
+at: https://watch.screencastify.com/v/uIUNOMqOvsmGUOUkSUlT.
 
 ## Description <a id="description"></a>
 
